@@ -1,0 +1,144 @@
+server_id = "mcp_ticketing"
+display_name = "Ticketing / Service Desk"
+version = "1.0.0"
+domain = "education"
+sdk_version = "0.1.0"
+risk_level = "medium"
+writes_allowed = "gated"
+transports = ["stdio"]
+credentials = []
+governance_gates = []
+environments = ["development", "staging", "production"]
+
+[[tools]]
+name = "create_queue"
+description = "Create a queue with an SLA policy"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "get_queue"
+description = "Get a queue and its SLA policy"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "list_queues"
+description = "List queues"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "create_ticket"
+description = "Intake a ticket (auto-computes SLA deadlines)"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "get_ticket"
+description = "Get a ticket by id"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "list_tickets"
+description = "List tickets by queue/status/assignee"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "assign_ticket"
+description = "Assign a ticket to an agent"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "set_priority"
+description = "Set ticket priority (recomputes SLA)"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "set_status"
+description = "Transition ticket status"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "close_ticket"
+description = "Close a ticket (terminal) — gated"
+risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
+
+[[tools]]
+name = "add_tag"
+description = "Add a tag to a ticket"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "escalate_ticket"
+description = "Escalate a ticket (raise priority, re-baseline SLA)"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "add_internal_note"
+description = "Add a staff-only internal note"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "send_public_reply"
+description = "Send a reply visible to the requester — gated"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = []
+
+[[tools]]
+name = "list_comments"
+description = "List a ticket's comments"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "sla_status"
+description = "SLA breach flags + minutes remaining for a ticket"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "sla_report"
+description = "SLA report across a queue (breaches, at-risk)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "workload"
+description = "Open ticket counts per assignee"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "audit_log"
+description = "Recent audit-trail entries"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []

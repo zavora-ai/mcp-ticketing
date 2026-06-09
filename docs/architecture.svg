@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#4f46e5"/><stop offset="100%" style="stop-color:#0891b2"/></linearGradient>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="780" height="470" fill="#f8fafc" rx="12"/>
+  <rect x="255" y="10" width="270" height="28" rx="8" fill="url(#hg)"/>
+  <text x="390" y="29" text-anchor="middle" fill="white" font-size="12" font-weight="bold">mcp-ticketing — Service Desk Platform</text>
+
+  <!-- agents -->
+  <rect x="40" y="48" width="700" height="42" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="390" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="#3730a3">Support &amp; Case Agents (clients of the ticketing platform)</text>
+  <text x="390" y="79" text-anchor="middle" font-size="7" fill="#4338ca">Student Support (education) · Matter Intake · Privacy Request / DSAR (legal)</text>
+  <line x1="390" y1="90" x2="390" y2="106" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- tools -->
+  <rect x="30" y="110" width="720" height="104" rx="10" fill="white" stroke="#0891b2" stroke-width="2"/>
+  <rect x="30" y="110" width="720" height="22" rx="10" fill="url(#hg)"/>
+  <text x="390" y="125" text-anchor="middle" fill="white" font-size="10" font-weight="bold">19 Tools — ticketing / service desk</text>
+  <g font-size="7.2" font-weight="bold" fill="#3730a3" text-anchor="middle">
+    <text x="120" y="150">Queues (3)</text>
+    <text x="320" y="150">Tickets/Workflow (9)</text>
+    <text x="540" y="150">Comments (3)</text>
+    <text x="675" y="150">SLA/Analytics (4)</text>
+  </g>
+  <g font-size="6.3" fill="#4338ca" text-anchor="middle">
+    <text x="120" y="165">create · get · list</text>
+    <text x="120" y="176">(SLA policy)</text>
+    <text x="320" y="165">create · assign · priority</text>
+    <text x="320" y="176">status · close* · tag · escalate</text>
+    <text x="540" y="165">internal_note</text>
+    <text x="540" y="176">public_reply*†</text>
+    <text x="675" y="165">sla_status · report</text>
+    <text x="675" y="176">workload · audit</text>
+  </g>
+  <text x="390" y="198" text-anchor="middle" font-size="6.4" fill="#64748b">* requires approval   † external write — reply visible to requester</text>
+  <line x1="390" y1="214" x2="390" y2="230" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- engines -->
+  <rect x="30" y="234" width="720" height="92" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="249" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e">Domain engines</text>
+  <g font-size="6.8" fill="#78350f" text-anchor="middle">
+    <text x="125" y="269" font-weight="bold">SLA clock</text>
+    <text x="125" y="281">due = policy[priority]</text>
+    <text x="125" y="292">→ breach detection</text>
+    <text x="315" y="269" font-weight="bold">Status workflow</text>
+    <text x="315" y="281">new→open→pending→</text>
+    <text x="315" y="292">resolved→closed (terminal)</text>
+    <text x="510" y="269" font-weight="bold">Escalation</text>
+    <text x="510" y="281">+1 level, bump priority,</text>
+    <text x="510" y="292">re-baseline SLA</text>
+    <text x="678" y="269" font-weight="bold">Analytics</text>
+    <text x="678" y="281">breaches · at-risk</text>
+    <text x="678" y="292">· workload</text>
+  </g>
+  <line x1="390" y1="326" x2="390" y2="342" stroke="#64748b" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- store -->
+  <rect x="30" y="346" width="720" height="62" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="1.5"/>
+  <text x="390" y="362" text-anchor="middle" font-size="9" font-weight="bold" fill="#334155">In-memory store (thread-safe) + audit trail</text>
+  <g font-size="6.6" fill="#475569" text-anchor="middle">
+    <text x="390" y="379">queues (SLA policy) · tickets · comments (public/internal)</text>
+    <text x="390" y="392" fill="#64748b">QUE · TKT · CMT</text>
+  </g>
+
+  <text x="390" y="430" text-anchor="middle" font-size="8" fill="#4f46e5" font-weight="bold">adk-mcp-sdk · rmcp 1.7 · stdio transport · registry-ready manifest</text>
+  <text x="390" y="448" text-anchor="middle" font-size="7" fill="#94a3b8">Apache-2.0 · zavora-ai/mcp-ticketing</text>
+</svg>
