@@ -1,144 +1,144 @@
 server_id = "mcp_ticketing"
-display_name = "Ticketing / Service Desk"
-version = "1.0.0"
+display_name = "Ticketing"
+version = "1.1.0"
 domain = "education"
-sdk_version = "0.1.0"
-risk_level = "medium"
+sdk_version = "0.2.0"
+risk_level = "high"
 writes_allowed = "gated"
 transports = ["stdio"]
 credentials = []
-governance_gates = []
+governance_gates = ["mrtr_approval"]
 environments = ["development", "staging", "production"]
 
 [[tools]]
 name = "create_queue"
-description = "Create a queue with an SLA policy"
+description = "Create a queue with the default SLA policy (per-priority response/resolution targets)."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "get_queue"
-description = "Get a queue and its SLA policy"
+description = "Get a queue and its SLA policy."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "list_queues"
-description = "List queues"
+description = "List all queues."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "create_ticket"
-description = "Intake a ticket (auto-computes SLA deadlines)"
+description = "Create (intake) a ticket. SLA response/resolution deadlines are auto-computed from the queue policy + priority."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "get_ticket"
-description = "Get a ticket by id"
+description = "Get a ticket by id."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "list_tickets"
-description = "List tickets by queue/status/assignee"
+description = "List tickets, optionally by queue, status, and/or assignee."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "assign_ticket"
-description = "Assign a ticket to an agent"
+description = "Assign a ticket to an agent (moves New -> Open)."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "set_priority"
-description = "Set ticket priority (recomputes SLA)"
+description = "Set a ticket's priority (recomputes SLA deadlines)."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "set_status"
-description = "Transition ticket status"
+description = "Transition a ticket's status (new/open/pending/resolved). Use close_ticket to close."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "close_ticket"
-description = "Close a ticket (terminal) — gated"
+description = "Close a ticket with a resolution (terminal). Gated."
 risk_class = "internal_write"
 requires_approval = true
 credential_bindings = []
 
 [[tools]]
 name = "add_tag"
-description = "Add a tag to a ticket"
+description = "Add a tag to a ticket."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "escalate_ticket"
-description = "Escalate a ticket (raise priority, re-baseline SLA)"
+description = "Escalate a ticket: bumps escalation level, raises priority a notch, and re-baselines SLA."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "add_internal_note"
-description = "Add a staff-only internal note"
+description = "Add an INTERNAL staff-only note to a ticket (not visible to the requester)."
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "send_public_reply"
-description = "Send a reply visible to the requester — gated"
+description = "Send a PUBLIC reply to the requester (counts as first response, sets SLA response time). External-facing — gated."
 risk_class = "external_write"
 requires_approval = true
 credential_bindings = []
 
 [[tools]]
 name = "list_comments"
-description = "List a ticket's comments"
+description = "List a ticket's comments (set include_internal=true for staff notes)."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "sla_status"
-description = "SLA breach flags + minutes remaining for a ticket"
+description = "SLA status for one ticket: response/resolution breach flags and minutes remaining."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "sla_report"
-description = "SLA report across a queue (breaches, at-risk)"
+description = "SLA report across a queue (or all): open, response/resolution breaches, and at-risk-next-2h counts."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "workload"
-description = "Open ticket counts per assignee"
+description = "Workload: open ticket counts per assignee (and unassigned)."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "audit_log"
-description = "Recent audit-trail entries"
+description = "Recent audit-trail entries (most recent first)."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
