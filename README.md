@@ -90,7 +90,7 @@ cd mcp-ticketing && cargo build --release
 ```toml
 server_id = "mcp_ticketing"
 display_name = "Ticketing / Service Desk"
-version = "1.0.0"
+version = "1.1.0"
 domain = "education"
 risk_level = "medium"
 writes_allowed = "gated"
