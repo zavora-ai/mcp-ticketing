@@ -67,7 +67,7 @@ pub struct AuditLogInput { #[serde(default = "dlimit")] pub limit: usize }
 #[derive(Clone)]
 pub struct TicketingServer { pub store: Arc<TicketingStore> }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl TicketingServer {
     // queues
     #[tool(description = "Create a queue with the default SLA policy (per-priority response/resolution targets).")]
@@ -191,4 +191,11 @@ impl HealthCheck for TicketingServer {
     async fn check_health(&self) -> HealthStatus {
         HealthStatus { healthy: true, message: Some("operational".into()), latency_ms: Some(1) }
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: TicketingServer,
+    task_tools: [],
+    approval_tools: ["close_ticket", "send_public_reply"],
+    cache_ttl_ms: 60_000,
 }
